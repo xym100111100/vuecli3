@@ -10,6 +10,7 @@
 </template>
 
 <script>
+
 import Vue from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import Button from "./components/button";
@@ -18,15 +19,27 @@ import Confirm from "./components/confirm";
 Vue.use(Button);
 Vue.use(Confirm);
 
+import Mock from "./mock";
+
 export default {
   name: "App",
   components: {
     HelloWorld
   },
   created() {
-    console.log(process.env);
+    // $.get("/getbyid?id=717543066348683268",(resp)=>{
+    //   console.log(resp)
+    // })
+    
+    $.get("api/news", resp => {
+      console.log(resp);
+    });
+
+    $.post("/api/login", { username: "小明", password: "123456" }, resp => {
+      console.log(resp);
+    });
   },
-  methods: {
+   methods: {
     del(payload) {
      // alert(payload);
       this.$confirm("点击删除", [

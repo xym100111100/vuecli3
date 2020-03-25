@@ -57,3 +57,7 @@ VUE_APP_URL=http://www.baidu.com
 
 // 获取环境变量一定要在生命周期钩子函数里面，使用process.env(这个是固定写法，系统关键词，死记硬背就行。)
 // 注意生产和开发的变量的名字要一样
+
+
+### public/index 里面有个<%= BASE_URL %> 这里可以直接获取到项目根路径，也就是vue.config.js里面的publicPath
+### 我们放第三方，不是模块化的插件(如jQuery)需要放在public里面再引入。
