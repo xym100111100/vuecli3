@@ -64,14 +64,17 @@ export default {
 }
 .handle {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding-bottom: 30px;
+
+ 
 }
 .btn {
   cursor: pointer;
   width: 200px;
   height: 80px;
   line-height: 80px;
+  text-align: center;
 }
 .btn:last-child{
        color: red;
