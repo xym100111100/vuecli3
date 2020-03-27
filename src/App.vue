@@ -5,18 +5,28 @@
     <!-- <form action="http://www.baidu.com" target="_blank">
       <my-button @click="del" bunType="button">提交</my-button>
      
-    </form> -->
+    </form>-->
     <!-- <my-banner :images="images"></my-banner> -->
     <form id="form">
-      <input name="uploadFile" type="file" accept="image/x-png,image/gif,image/jpeg,image/bmp" ref="head-file">
-      <input name="uploadFile2" type="file" accept="image/x-png,image/gif,image/jpeg,image/bmp" ref="head-file">
+      <input
+        name="file"
+        type="file"
+        accept="image/x-png, image/gif, image/jpeg, image/bmp"
+        ref="head-file"
+      />
+      <input
+        name="file"
+        type="file"
+        accept="image/x-png, image/gif, image/jpeg, image/bmp"
+        ref="head-file2"
+        @change="uploadHead2"
+      />
 
       <!-- accept 表示接收的文件类型，优化筛选速度和防止错误  -->
-      <input name="name" @change="uploadHead" 　value="ddd" ref="head-file">
-
+      <input name="name" @change="uploadHead" 　value="ddd" />
     </form>
   </div>
-</template> 
+</template>
 
 <script>
 import Vue from "vue";
@@ -40,10 +50,16 @@ export default {
   },
   data() {
     return {
-      images: []
+      images: [],
+      username: ""
     };
   },
   created() {
+    // axios
+    //   .get("http://192.168.8.106:9750/suc/love/get-by-id?id=661708632915836928")
+    //   .then(resp => {
+    //     console.log(resp);
+    //   });
     // 测试异步(这样会导致子组件中的ｃｒｅａｔｅｄ拿不到值，需要使ｗａｔｃｈ监听)
     // setTimeout(() => {
     //   this.images = [
@@ -62,32 +78,74 @@ export default {
     // $.post("/api/login", { username: "小明", password: "123456" }, resp => {
     //   console.log(resp);
     // });
-    // axios
-    //   .get("http://192.168.1.16:9100/suc/org/getbyid?id=517928358546243584")
-    //   .then(resp => {
-    //     console.log(resp);
-    //   });
   },
   methods: {
-    uploadHead(e) {
-      /* 初始化一个FormData对象，这样可以获取到ｆｏｒｍ中的值 */
+    uploadHead() {
       let form = document.getElementById("form");
       let data = new FormData(form);
-      data.append("payload", data);
+      // data.append("file", this.$refs["head-file"]);
+      // data.append("file", this.$refs["head-file2"]);
+      axios.post("http://127.0.0.1:20180/ise/uploads", data).then(resp => {
+        console.log(resp);
+      });
+    },
 
-      // console.log(e.target.files[0]) 这样也能拿到文件对象，需要注意的是如果调用方法的地方有参数，那么第一个参数应该叫$event
-      // let headFile = this.$refs["head-file"];
-      // let data = new FormData();
-      // console.log(headFile)
-      // data.append("uploadFile", headFile);
-      // console.log(process.env.VUE_APP_API + ":20180/ise/upload");
-      axios
-        .post(process.env.VUE_APP_API + ":20180/ise/upload", data)
+    uploadHead2(e) {
+      let data = new FormData();
+      // 这样两个获取的都是文件对象      
+      console.log(e.target.files[0])
+      console.log(this.$refs["head-file2"])
+      // 这里可以复制一行出来，相同的key(file)的话将会以数组的形式传到后台，这样后台就能以数组的形式接收了。
+      data.append("file", this.$refs["head-file2"]);
+      axios.post("http://127.0.0.1:20180/ise/uploads", data).then(resp => {
+        console.log(resp);
+      });
+    },
+
+    submit() {
+      if (this.username.match(/^\s*$/)) {
+        alert("请输入用户名");
+        return;
+      }
+
+      /**
+       * 测试发现两种参数格式后天都可以正确接受
+       */
+      /*    axios
+        .put("http://192.168.8.106:9750/suc/user", {
+          wxName: this.username,
+          id: "661524748479627264"
+        })
         .then(resp => {
           console.log(resp);
         });
+
+      const params = new URLSearchParams();
+      params.append("wxName", this.username);
+      params.append("id", "661524748479627264");
+      axios
+        .put("http://192.168.8.106:9750/suc/user", {
+          wxName: this.username,
+          id: "661524748479627264"
+        })
+        .then(resp => {
+          console.log(resp);
+        });
+ */
+
+      /**
+       * 可以使用自定义配置新建一个 axios 实例
+       */
+      const instance = axios.create({
+        baseURL: "http://192.168.8.106:9750",
+        timeout: 1000
+      });
+      instance.get("/suc/love/get-by-id?id=661708632915836928").then(resp => {
+        console.log(resp);
+      });
     },
     del(payload) {
+      // alert(payload);
       this.$confirm("点击删除", [
         {
           text: "取消",

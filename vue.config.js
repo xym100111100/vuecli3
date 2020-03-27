@@ -11,7 +11,7 @@ module.exports = {
     productionSourceMap: true,
     devServer: {
         open: false, // 是否打开浏览器
-        host: '192.168.1.16', // 主机0.0.0.0支持局域网地址
+        host: '0.0.0.0', // 主机0.0.0.0支持局域网地址
         port: 5900, // 端口
         https: false, // 是否启动https
         proxy: {
