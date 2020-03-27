@@ -1,7 +1,7 @@
 <template>
   <div class="banner-wrap" @mouseover="stop" @mouseout="play">
     <transition-group name="banner">
-      <div class="slide" v-for="(item,index)  in data " :key="index" v-show="item.checked" 　>
+      <div class="slide" v-for="(item,index)  in data " :key="item" v-show="item.checked" 　>
         <img :key="index" :src="item.image">
       </div>
     </transition-group>
