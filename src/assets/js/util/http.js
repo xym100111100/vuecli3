@@ -2,20 +2,21 @@ import axios from 'axios'
 
 export function request(config = {}) {
    let service = axios.create({
-     // baseURL: "http://192.168.8.106:9750"
+      // baseURL: "http://192.168.8.106:9750"
    })
 
    service.interceptors.request.use(function (config) {
       console.log(config)
-      if(config.method === "post"){
+      if (config.method === "post") {
+
          config.data = {
             wxOpenid: config.wxOpenid
          }
       }
 
       // 这里在这里做token、
-      config.headers ={
-         token:"aaaa"
+      config.headers = {
+         token: "aaaa"
       }
       return config;
    }, function (error) {

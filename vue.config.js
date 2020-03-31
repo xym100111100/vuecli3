@@ -23,14 +23,14 @@ module.exports = {
                 secure: false, // 使用的是http协议则设置为false，https协议则设置为true
                 //开启代理：在本地会创建一个虚拟服务端，然后发送请求的数据，并同时接收请求的数据，这样客户端端和服务端进行数据的交互就不会有跨域问题
                 changOrigin: true,
-                pathRewrite:{
-                    '^/getbyid':''  // 这里会将/getbyid替换成空格，最后的访问路径变为 http://192.168.1.16:9101/onl/onlinespec(这里接着拼接view过来的路径和参数)
+                pathRewrite: {
+                    '^/getbyid': ''  // 这里会将/getbyid替换成空格，最后的访问路径变为 http://192.168.1.16:9101/onl/onlinespec(这里接着拼接view过来的路径和参数)
                 }
             }
         }
     },
-    configureWebpack:{
-        devtool:'source-map' //配置开发者环境的ｓｏｕｒｃｅ用于断点调试
+    configureWebpack: {
+        devtool: 'source-map' //配置开发者环境的ｓｏｕｒｃｅ用于断点调试
     }
 
 }
