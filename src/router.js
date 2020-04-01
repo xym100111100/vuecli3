@@ -9,19 +9,37 @@ import Router from "vue-router"
  */
 Vue.use(Router)
 let router = new Router({
-   mode:'hash',  // 1:hash 有#号，history没有#号
-   base:process.env.BASE_URL,  // 自动获取根目录路径
-   routes:[
-      {
-         path:'/',
-         name:'home', 
-         component:()=>import("./components/pages/indexPage/home")
-      },
-      {
-         path:'/news',
-         name:'news',
-         component:()=>import("./components/pages/newsPage/news")
-      }
-   ]
+    mode: 'hash',  // 1:hash 有#号，history没有#号
+    base: process.env.BASE_URL,  // 自动获取根目录路径
+    routes: [
+        {
+            path: '/',
+            name: 'home',
+            component: () => import("./components/pages/indexPage/home")
+        },
+        {
+            path: '/news',
+            name: 'news',
+            component: () => import("./components/pages/newsPage/news")
+        },
+        {
+            path: '/goods',
+            name: 'goods',
+            component: () => import("./components/pages/goodsPage"),
+            redirect:'/goods/good', // 页面重定向
+            children:[
+                {
+                    path:'details',  // 如何这里直接写details 不写斜杠那么路径将自动拼接成goods/details
+                    name:'good-details',
+                    component:()=>import("./components/pages/goodsPage/details")
+                },
+                {
+                    path:'good',
+                    name:'goods-good',
+                    component:()=>import("./components/pages/goodsPage/good")
+                }
+            ]
+        }
+    ]
 })
 export default router;
