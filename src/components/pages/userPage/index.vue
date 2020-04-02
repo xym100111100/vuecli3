@@ -20,6 +20,10 @@ export default {
     }
   },
   beforeRouteEnter(to, from, next) {
+    /**
+     * 在渲染组件对应的路由被comfirm前调用，不能获取组件实例this
+     * 因为当前守卫执行前，组件实例还没有被创建
+     */
     if (Boolean(localStorage["isLogin"])) {
       next();
     } else {
