@@ -23,20 +23,25 @@ let router = new Router({
             component: () => import("./components/pages/newsPage/news")
         },
         {
+            path: '/login',
+            name: 'login',
+            component: () => import("./components/pages/login")
+        },
+        {
             path: '/goods',
             name: 'goods',
             component: () => import("./components/pages/goodsPage"),
-            redirect:'/goods/good', // 页面重定向
-            children:[
+            redirect: '/goods/good', // 页面重定向
+            children: [
                 {
-                    path:'details',  // 如何这里直接写details 不写斜杠那么路径将自动拼接成goods/details
-                    name:'good-details',
-                    component:()=>import("./components/pages/goodsPage/details")
+                    path: 'details',  // 如何这里直接写details 不写斜杠那么路径将自动拼接成goods/details
+                    name: 'good-details',
+                    component: () => import("./components/pages/goodsPage/details")
                 },
                 {
-                    path:'good',
-                    name:'goods-good',
-                    component:()=>import("./components/pages/goodsPage/good")
+                    path: 'good',
+                    name: 'goods-good',
+                    component: () => import("./components/pages/goodsPage/good")
                 }
             ]
         }

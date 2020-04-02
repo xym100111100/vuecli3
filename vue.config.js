@@ -14,7 +14,7 @@ module.exports = {
         host: '0.0.0.0', // 主机0.0.0.0支持局域网地址
         port: 5900, // 端口
         https: false, // 是否启动https
-        proxy: {
+        proxy: {// 这个拦截是会在没有域名也就是说没有http://www.baidu.com这一段的情况才会代理(注意http:www.baidu.com格式写错也会被代理)，否则会将我们写的url拼接上来成127.0.0.1:5900/XXXXXX
             '/getbyid': {
                 //要访问的跨域的域名，跨域的本质是不同协议|不同域名|不同端口
                 //最后访问会变成 http://192.168.1.16:9101/onl/onlinespec/getbyid(这里接着拼接view过来的路径和参数)
