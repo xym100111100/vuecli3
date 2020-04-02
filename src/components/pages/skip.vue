@@ -1,8 +1,8 @@
 <template>
-  <div>{{this.$store.state.total}}</div>
+  <div>子组件计数器{{this.$store.state.counter.total}}</div>
 </template>
 
-<script>
+<script> 
 export default {
   name: "skip"
 };
