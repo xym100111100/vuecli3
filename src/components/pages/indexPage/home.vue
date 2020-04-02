@@ -2,11 +2,16 @@
   <div>
     <ul>
       <li>
-        <router-link to="/news">新闻页面1</router-link><br/>
-        <router-link to="/news">新闻页面2</router-link><br/>
-        <router-link to="/goods">商品页面</router-link><br/>
-        <router-link to="/login">会员登录</router-link><br/>
-
+        <router-link to="/news">新闻页面</router-link>
+        <br />
+        <router-link to="/goods">商品页面</router-link>
+        <br />
+        <router-link to="/login">会员登录</router-link>
+        <br />
+        <router-link to="/user">个人中心</router-link>
+        <br />
+        <router-link to="/classsfy">商品列表</router-link>
+        <br />
       </li>
       <li @click="goNews">新闻页面3</li>
     </ul>
