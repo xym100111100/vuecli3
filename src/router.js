@@ -37,6 +37,11 @@ let router = new Router({
             component: () => import("./components/pages/newsPage/news")
         },
         {
+            path:'/reg',
+            name:'reg',
+            component:()=>import("./components/pages/regPage")
+        },
+        {
             path: '/skip',
             name: 'skip',
             component: () => import("./components/pages/skip")

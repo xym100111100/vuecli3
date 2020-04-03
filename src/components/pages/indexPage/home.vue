@@ -7,6 +7,8 @@
     <router-link to="/table">表格演示</router-link>
     <br/>
     <router-link to="/login">登录验证演示</router-link>
+    <br/>
+    <router-link to="/reg">注册验证mintUi框架</router-link>
 
   </div>
 </template>
