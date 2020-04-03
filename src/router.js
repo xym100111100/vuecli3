@@ -52,6 +52,11 @@ let router = new Router({
             component: () => import("./components/pages/classifyPage")
         },
         {
+            path:'/table',
+            name:'table',
+            component:()=>import("./components/pages/tablePage")
+        },
+        {
             path: '/user',
             name: 'user',
             component: () => import("./components/pages/userPage"),

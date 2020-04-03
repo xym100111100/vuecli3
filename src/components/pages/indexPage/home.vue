@@ -11,6 +11,7 @@
       <img v-if="imageUrl" :src="imageUrl" class="avatar" />
       <i v-else class="el-icon-plus avatar-uploader-icon"></i>
     </el-upload>
+    <router-link to="/table">表格演示</router-link>
   </div>
 </template>
 
