@@ -1,21 +1,32 @@
 <template>
-  <div>
-    <el-upload class="avatar-uploader" :action="url" :show-file-list="false" name="file" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
-      <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-    </el-upload>
-    <router-link to="/table">表格演示</router-link>
-    <br/>
-    <router-link to="/login">登录验证演示</router-link>
-    <br/>
-    <router-link to="/reg">注册验证mintUi框架</router-link>
-
+  <div class="page" ref="page">
+    <div class="main">
+      <el-upload
+        class="avatar-uploader"
+        :action="url"
+        :show-file-list="false"
+        name="file"
+        :on-success="handleAvatarSuccess"
+        :before-upload="beforeAvatarUpload"
+      >
+        <img v-if="imageUrl" :src="imageUrl" class="avatar" />
+        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+      </el-upload>
+      <router-link to="/table">表格演示</router-link>
+      <br />
+      <router-link to="/login">登录验证演示</router-link>
+      <br />
+      <router-link to="/reg">注册验证mintUi框架</router-link>
+      <br />
+      <router-link to="/scroll">测试滚动</router-link>
+    </div>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
 import { Upload } from "element-ui";
+import BScroll from "better-scroll";
 Vue.use(Upload);
 export default {
   name: "Home",
@@ -27,6 +38,16 @@ export default {
   },
   created() {
     console.log(this.$config);
+  },
+  mounted() {
+   this.bScroll =  new BScroll(this.$refs["page"], {
+      scrollY: true,
+      pullDownRefresh: true
+    });
+    this.bScroll.on("pullingDown",()=>{
+        console.log("sss")
+        this.bScroll.finishPullDown();
+    })
   },
   methods: {
     handleAvatarSuccess(res, file) {
@@ -71,5 +92,15 @@ export default {
   width: 178px;
   height: 178px;
   display: block;
+}
+.page {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+.main {
+  height: 2000px;
+  width: 100%;
+  background: red;
 }
 </style>

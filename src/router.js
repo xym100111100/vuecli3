@@ -37,14 +37,19 @@ let router = new Router({
             component: () => import("./components/pages/newsPage/news")
         },
         {
-            path:'/reg',
-            name:'reg',
-            component:()=>import("./components/pages/regPage")
+            path: '/reg',
+            name: 'reg',
+            component: () => import("./components/pages/regPage")
         },
         {
             path: '/skip',
             name: 'skip',
             component: () => import("./components/pages/skip")
+        },
+        {
+            path: '/scroll',
+            name: 'scroll',
+            component: () => import("./components/pages/classifyPage/scroll")
         },
         {
             path: '/login',
@@ -57,9 +62,9 @@ let router = new Router({
             component: () => import("./components/pages/classifyPage")
         },
         {
-            path:'/table',
-            name:'table',
-            component:()=>import("./components/pages/tablePage")
+            path: '/table',
+            name: 'table',
+            component: () => import("./components/pages/tablePage")
         },
         {
             path: '/user',
