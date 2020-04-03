@@ -29,6 +29,9 @@
     <ul>
       <li v-for="(item,index) in users" :key="index">{{item.name}}{{item.ages}}</li>
     </ul>
+    <ul>
+      <li v-for="(item,index) in navs" :key="index">{{item.wxName}}{{item.schoolName}}</li>
+    </ul>
   </div>
 </template>
 
@@ -46,7 +49,7 @@ export default {
   },
   created() {
     // 使用命名空间之后这里就失效了。
-    console.log(this.$store);
+     //this.getNavs();
   },
   components: {
     skip
@@ -57,7 +60,8 @@ export default {
     //   total:"total"
     // })
     ...mapState({
-      total: state => state.total
+      total: state => state.total,
+      navs: state => state.index.navs
     }),
     // ...mapGetters(["getUsers"])  这里的值不能和data里面的冲突
     ...mapGetters({
@@ -70,7 +74,12 @@ export default {
       INC_TOTAL: INC_TOTAL,
       DEC_TOTAL: DEC_TOTAL
     }),
-    ...mapActions(["incTotal", "decTotal"]),
+    // ...mapActions(["counter/incTotal", "decTotal"]),
+    ...mapActions({
+      incTotal: "counter/incTotal",
+      decTotal: "counter/decTotal",
+      getNavs: "index/getNavs"
+    }),
 
     incCount() {
       this.$store.commit("counter/INC_TOTAL", { total: ++this.num });
