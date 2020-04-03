@@ -1,3 +1,4 @@
+import 'babel-polyfill' // 让e6转e5兼容ie
 import "url-search-params-polyfill" //让ie兼容这个URLSearchParams
 import Vue from 'vue'
 import app from './App.vue'

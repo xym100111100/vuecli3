@@ -25,6 +25,14 @@ Vue.use(Router)
 let router = new Router({
     mode: 'hash',  // 1:hash 有#号，history没有#号
     base: process.env.BASE_URL,  // 自动获取根目录路径
+    scrollBehavior: (to, from, position) => { //这个必须搭配keepAlive= true才生效
+        if (position) {
+            return position;
+        } else {
+            return { x: 0, y: 0 }
+        }
+
+    },
     routes: [
         {
             path: '/',
@@ -54,7 +62,8 @@ let router = new Router({
         {
             path: '/login',
             name: 'login',
-            component: () => import("./components/pages/loginPage")
+            component: () => import("./components/pages/loginPage"),
+            meta: { keepAlive: true }
         },
         {
             path: '/classsfy',
