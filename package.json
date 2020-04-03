@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
+    "element-ui": "^2.13.0",
     "url-search-params-polyfill": "^8.0.0",
     "vue": "^2.6.11",
     "vue-router": "^3.0.3",
@@ -19,6 +20,7 @@
     "@vue/cli-service": "~4.2.0",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-component": "^1.1.1",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
     "mockjs": "^1.1.0",

@@ -3,10 +3,11 @@ import Vue from 'vue'
 import app from './App.vue'
 import router from './router'
 import store from './store'
+import config from './assets/js/util/conf/conf'
 Vue.config.productionTip = false
 
 
-
+Vue.prototype.$config = config
 
 new Vue({
   store,
