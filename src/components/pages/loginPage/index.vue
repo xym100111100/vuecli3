@@ -1,18 +1,23 @@
 <template>
   <div style="width:600px">
-
-    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="账号" prop="username">
+    <el-form
+      :model="ruleForm"
+      :rules="rules"
+      ref="ruleForm"
+      label-width="100px"
+      class="demo-ruleForm"
+    >
+      <el-form-item :label="$t('username')" prop="username">
         <el-input v-model="ruleForm.username"></el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="password">  <!-- prop是用來检测的标示，这个和rules中的属性名不对的话将不会校验 -->
+      <el-form-item :label="$t('password')" prop="password">
+        <!-- prop是用來检测的标示，这个和rules中的属性名不对的话将不会校验 -->
         <el-input v-model="ruleForm.password"></el-input>
       </el-form-item>
 
-      <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
-
+      <el-button type="primary" @click="submitForm('ruleForm')">{{$t('login')}}</el-button>
+      <el-button type="primary" @click="changeLocal">切换语言</el-button>
     </el-form>
-
   </div>
 </template>
 <script>
@@ -117,6 +122,11 @@ export default {
     checkedPassword(rule, value, callback) {
       console.log(rule, value);
       callback();
+    },
+    changeLocal() {
+      this.$i18n.locale = this.$i18n.locale === "en" ? "cn" : "en";
+      // 防止刷新后不见了
+      sessionStorage["local"] = this.$i18n.locale;
     }
   }
 };

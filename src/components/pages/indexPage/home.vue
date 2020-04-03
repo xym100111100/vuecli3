@@ -42,7 +42,8 @@ export default {
   mounted() {
    this.bScroll =  new BScroll(this.$refs["page"], {
       scrollY: true,
-      pullDownRefresh: true
+      pullDownRefresh: true,
+      click:true   // 这里是允许页面点击
     });
     this.bScroll.on("pullingDown",()=>{
         console.log("sss")
