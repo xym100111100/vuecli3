@@ -1,18 +1,15 @@
 <template>
   <div>
     <template>
-      <el-table
-        @selection-change="handleSelectionChange"
-        stripe
-        :data="tableData"
-        style="width: 100%"
-      >
+      <el-table @selection-change="handleSelectionChange" stripe :data="tableData" style="width: 100%">
         <el-table-column type="selection" width="55">
+
+        </el-table-column>
+        <el-table-column prop="date" label="头像" width="180">
           <template v-slot:default="scope">
             <img :src="scope.row.url+'这里可以使用图片'" />
           </template>
         </el-table-column>
-        <el-table-column prop="date" label="日期" width="180"></el-table-column>
         <el-table-column prop="name" label="姓名" width="180"></el-table-column>
         <el-table-column prop="address" label="地址"></el-table-column>
         <el-table-column label="管理">

@@ -1,17 +1,13 @@
 <template>
   <div>
-    <el-upload
-      class="avatar-uploader"
-      :action="url"
-      :show-file-list="false"
-      name="file"
-      :on-success="handleAvatarSuccess"
-      :before-upload="beforeAvatarUpload"
-    >
+    <el-upload class="avatar-uploader" :action="url" :show-file-list="false" name="file" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
       <img v-if="imageUrl" :src="imageUrl" class="avatar" />
       <i v-else class="el-icon-plus avatar-uploader-icon"></i>
     </el-upload>
     <router-link to="/table">表格演示</router-link>
+    <br/>
+    <router-link to="/login">登录验证演示</router-link>
+
   </div>
 </template>
 
