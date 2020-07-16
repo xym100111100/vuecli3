@@ -23,7 +23,7 @@ export default {
     this.obj = JSON.parse(this.sendRequest()).data;
   },
   methods: {
-    upload(e) {
+    upload(e) { 
       console.log(e.target.files[0]);
       // 先准备好 oss 服务器需要的内容
       const photo = e.target.files[0]  // 获取图片对象
